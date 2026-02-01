@@ -1,0 +1,418 @@
+/* 后台整体 */
+.kina-steam-admin-v2 {
+    max-width: 1000px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+.kina-admin-header {
+    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.kina-admin-header h1 {
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.kina-admin-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+/* 区块 */
+.kina-admin-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+}
+
+.kina-admin-section h2 {
+    margin: 0 0 25px 0;
+    color: #1b2838;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #66c0f4;
+}
+
+/* 使用指南 - 短代码卡片 */
+.kina-shortcode-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kina-sc-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s;
+}
+
+.kina-sc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: #66c0f4;
+}
+
+.kina-sc-header {
+    background: #1b2838;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kina-sc-header code {
+    background: rgba(102, 192, 244, 0.2);
+    color: #66c0f4;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Consolas', monospace;
+}
+
+.kina-sc-badge {
+    background: #66c0f4;
+    color: #1b2838;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.kina-sc-body {
+    padding: 20px;
+}
+
+.kina-sc-body p {
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    color: #1b2838;
+    font-size: 15px;
+}
+
+.kina-sc-body ul {
+    margin: 0 0 15px 0;
+    padding-left: 20px;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.kina-sc-preview {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    border-left: 3px solid #66c0f4;
+}
+
+.kina-sc-tip {
+    background: #fff3e0;
+    color: #e65100;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    border-left: 3px solid #ff9800;
+    margin-top: 10px;
+}
+
+/* 使用技巧 */
+.kina-usage-tips {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #dde2e8;
+}
+
+.kina-usage-tips h3 {
+    margin: 0 0 20px 0;
+    color: #1b2838;
+    font-size: 16px;
+}
+
+.kina-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.kina-tip-item {
+    display: flex;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.kina-tip-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #66c0f4 0%, #2a75a9 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.kina-tip-item div {
+    flex: 1;
+}
+
+.kina-tip-item strong {
+    display: block;
+    color: #1b2838;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.kina-tip-item p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.kina-highlight {
+    background: linear-gradient(120deg, #a4d007 0%, #a4d007 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 88%;
+    padding: 0 4px;
+    font-weight: 600;
+    color: #1b2838;
+}
+
+/* 表单样式 */
+.kina-form-table {
+    margin-top: 20px;
+}
+
+.kina-form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+    vertical-align: top;
+}
+
+.kina-form-table th label {
+    display: block;
+    font-weight: 600;
+    color: #1b2838;
+    margin-bottom: 5px;
+}
+
+.kina-field-desc {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    font-weight: normal;
+}
+
+.kina-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.kina-input:focus {
+    outline: none;
+    border-color: #66c0f4;
+    box-shadow: 0 0 0 3px rgba(102, 192, 244, 0.1);
+}
+
+.kina-input-group {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+}
+
+.kina-input-prefix {
+    background: #f5f5f5;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    color: #888;
+    font-size: 13px;
+    font-family: monospace;
+}
+
+.kina-input-group .kina-input {
+    border-radius: 0 8px 8px 0;
+    flex: 1;
+}
+
+/* 连接状态 */
+.kina-connection-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.kina-connection-status.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #4caf50;
+}
+
+.kina-connection-status.pending {
+    background: #fff3e0;
+    color: #ef6c00;
+    border-left: 4px solid #ff9800;
+}
+
+.kina-connection-status .kina-status-icon {
+    font-size: 24px;
+}
+
+.kina-connection-status strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.kina-connection-status code {
+    background: rgba(0,0,0,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* 保存按钮 */
+.kina-save-btn {
+    background: linear-gradient(135deg, #66c0f4 0%, #2a75a9 100%) !important;
+    border: none !important;
+    padding: 12px 30px !important;
+    font-size: 15px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(102, 192, 244, 0.3) !important;
+    transition: all 0.3s !important;
+}
+
+.kina-save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4) !important;
+}
+
+/* 测试区域 */
+.kina-test-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.kina-test-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px !important;
+    height: auto !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    background: #1b2838 !important;
+    color: #fff !important;
+    border: none !important;
+    transition: all 0.3s !important;
+}
+
+.kina-test-btn:hover {
+    background: #2a475e !important;
+    transform: translateY(-2px);
+}
+
+.kina-btn-icon {
+    font-size: 16px;
+}
+
+/* 通知 */
+.kina-admin-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-left: 4px solid #ffc107;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.kina-notice-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.kina-admin-notice strong {
+    display: block;
+    color: #f57c00;
+    margin-bottom: 5px;
+}
+
+.kina-admin-notice p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.kina-link {
+    color: #66c0f4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.kina-link:hover {
+    text-decoration: underline;
+}
+
+/* 测试结果 */
+#kina-test-result {
+    margin-top: 20px;
+}
+
+#kina-test-result .notice {
+    border-radius: 10px;
+    padding: 20px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#kina-test-result .notice-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+#kina-test-result .notice-error {
+    background: #ffebee;
+    color: #c62828;
+}

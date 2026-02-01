@@ -1,0 +1,1011 @@
+/* ==================== 基础变量 ==================== */
+:root {
+    --glass-bg: rgba(20, 25, 35, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    --steam-blue: #66c0f4;
+    --steam-blue-glow: rgba(102, 192, 244, 0.5);
+    --steam-green: #a4d007;
+    --steam-green-glow: rgba(164, 208, 7, 0.5);
+    --text-primary: rgba(255, 255, 255, 0.95);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    --blur: saturate(180%) blur(20px);
+}
+
+/* ==================== 完整资料卡片 - 磨砂玻璃 ==================== */
+.kina-steam-profile {
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px var(--glass-border),
+        inset 0 1px 0 var(--glass-highlight);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    position: relative;
+    border: 1px solid var(--glass-border);
+}
+
+.kina-profile-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+.kina-profile-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, var(--glass-bg) 100%);
+}
+
+.kina-profile-content {
+    position: relative;
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+    z-index: 1;
+}
+
+/* 头像区域 */
+.kina-profile-avatar-section {
+    flex-shrink: 0;
+}
+
+.kina-avatar-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.kina-avatar-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 0 0 1px var(--glass-border),
+        0 10px 40px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.kina-avatar-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.kina-avatar-frame {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.kina-avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.kina-status-glow {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid rgba(20, 25, 35, 0.8);
+    z-index: 3;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.kina-status-glow.online { 
+    background: #57cbde; 
+    animation: breathe 3s ease-in-out infinite;
+}
+.kina-status-glow.playing { 
+    background: var(--steam-green); 
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    box-shadow: 0 0 20px var(--steam-green);
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 15px var(--steam-green); }
+    50% { transform: scale(1.15); box-shadow: 0 0 30px var(--steam-green), 0 0 50px var(--steam-green-glow); }
+}
+
+.kina-level-badge {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    border: 2px solid rgba(20, 25, 35, 0.8);
+    z-index: 4;
+}
+
+.kina-level-num {
+    font-size: 13px;
+}
+
+.kina-level-text {
+    font-size: 9px;
+    opacity: 0.8;
+}
+
+/* 信息区域 */
+.kina-profile-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.kina-profile-name {
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* 状态显示 - 磨砂玻璃效果 */
+.kina-profile-status {
+    margin-bottom: 20px;
+}
+
+.kina-status-playing {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(164, 208, 7, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(164, 208, 7, 0.3);
+    color: var(--steam-green);
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 
+        0 4px 15px rgba(164, 208, 7, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    animation: border-glow 2s ease-in-out infinite;
+}
+
+@keyframes border-glow {
+    0%, 100% { box-shadow: 0 4px 15px rgba(164, 208, 7, 0.2), 0 0 0 1px rgba(164, 208, 7, 0.3); }
+    50% { box-shadow: 0 4px 25px rgba(164, 208, 7, 0.4), 0 0 20px rgba(164, 208, 7, 0.3); }
+}
+
+.kina-pulse-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--steam-green);
+    border-radius: 50%;
+    animation: dot-pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px var(--steam-green);
+}
+
+@keyframes dot-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.7); opacity: 0.6; }
+}
+
+.kina-status-label {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.kina-status-divider {
+    opacity: 0.4;
+    font-weight: 300;
+}
+
+.kina-game-name {
+    color: var(--steam-green);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+    text-shadow: 0 0 10px rgba(164, 208, 7, 0.3);
+}
+
+.kina-game-name:hover {
+    border-bottom-color: var(--steam-green);
+    text-shadow: 0 0 20px rgba(164, 208, 7, 0.5);
+}
+
+/* 普通状态 */
+.kina-status-normal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.kina-status-normal.online { color: #57cbde; }
+.kina-status-normal.offline { color: #848484; }
+.kina-status-normal.busy { color: #ff6b6b; }
+.kina-status-normal.away { color: #feca57; }
+
+.kina-status-icon {
+    font-size: 12px;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* 元信息 */
+.kina-profile-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.kina-meta-item {
+    color: var(--text-secondary);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.03);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+/* 最近游戏区域 - 磨砂玻璃 */
+.kina-profile-recent {
+    padding: 30px 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.kina-profile-recent h3 {
+    color: var(--text-primary);
+    font-size: 18px;
+    margin: 0 0 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.kina-section-icon {
+    font-size: 20px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.kina-recent-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.kina-recent-game {
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.kina-recent-game:hover {
+    transform: translateY(-8px);
+}
+
+.kina-recent-cover {
+    position: relative;
+    aspect-ratio: 2/3;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.3),
+        0 0 0 1px var(--glass-border);
+    background: rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.kina-recent-game:hover .kina-recent-cover {
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(102, 192, 244, 0.3),
+        0 0 30px rgba(102, 192, 244, 0.2);
+}
+
+.kina-recent-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.kina-recent-game:hover .kina-recent-cover img {
+    transform: scale(1.1);
+}
+
+.kina-recent-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.kina-recent-game:hover .kina-recent-overlay {
+    opacity: 1;
+}
+
+.kina-view-btn {
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 24px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.kina-view-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.kina-recent-info {
+    margin-top: 15px;
+}
+
+.kina-recent-title {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.kina-recent-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* 底部按钮 - 磨砂玻璃 */
+.kina-profile-footer {
+    padding: 25px 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.kina-steam-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: rgba(102, 192, 244, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid rgba(102, 192, 244, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(102, 192, 244, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.kina-steam-btn:hover {
+    background: rgba(102, 192, 244, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 30px rgba(102, 192, 244, 0.3),
+        0 0 0 1px rgba(102, 192, 244, 0.5);
+    color: var(--text-primary);
+}
+
+.kina-steam-icon {
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0 0 5px rgba(102, 192, 244, 0.5));
+}
+
+/* ==================== 迷你状态 - 磨砂玻璃优化版 ==================== */
+.kina-steam-mini-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(25, 30, 40, 0.7);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    padding: 10px 18px 10px 12px;
+    border-radius: 50px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 220px;
+    max-width: 320px;
+}
+
+.kina-steam-mini-status:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(102, 192, 244, 0.2),
+        0 0 30px rgba(102, 192, 244, 0.1);
+    background: rgba(30, 35, 48, 0.8);
+}
+
+.kina-mini-avatar-wrap {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+.kina-mini-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.kina-mini-glow {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(25, 30, 40, 0.9);
+    box-shadow: 0 0 10px currentColor;
+    transition: all 0.3s;
+}
+
+.kina-mini-glow.online { 
+    background: #57cbde; 
+    box-shadow: 0 0 15px #57cbde;
+    animation: mini-breathe 3s ease-in-out infinite;
+}
+
+.kina-mini-glow.playing { 
+    background: var(--steam-green); 
+    box-shadow: 0 0 20px var(--steam-green);
+    animation: mini-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mini-breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.9; }
+}
+
+@keyframes mini-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--steam-green); }
+    50% { transform: scale(1.3); box-shadow: 0 0 25px var(--steam-green), 0 0 40px var(--steam-green-glow); }
+}
+
+.kina-mini-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+.kina-mini-name {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    letter-spacing: 0.3px;
+}
+
+.kina-mini-state {
+    font-size: 13px;
+    line-height: 1.3;
+    overflow: hidden;
+}
+
+/* 游戏中状态 - 单行显示优化 */
+.kina-mini-playing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--steam-green);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+}
+
+/* 发光点效果 */
+.kina-mini-playing::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--steam-green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-blink 1.5s ease-in-out infinite;
+    box-shadow: 0 0 12px var(--steam-green);
+}
+
+@keyframes dot-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+.kina-mini-divider {
+    opacity: 0.5;
+    font-weight: 300;
+    flex-shrink: 0;
+}
+
+/* 游戏名 - 超长截断 */
+.kina-mini-game {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--steam-green);
+    text-shadow: 0 0 10px rgba(164, 208, 7, 0.3);
+    transition: all 0.3s;
+}
+
+.kina-steam-mini-status:hover .kina-mini-game {
+    text-shadow: 0 0 15px rgba(164, 208, 7, 0.5);
+}
+
+/* 普通状态 */
+.kina-mini-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.kina-mini-text.online { color: #57cbde; }
+.kina-mini-text.offline { color: #848484; }
+.kina-mini-text.busy { color: #ff6b6b; }
+.kina-mini-text.away { color: #feca57; }
+
+.kina-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* ==================== 游戏库 - 磨砂玻璃 ==================== */
+.kina-steam-library-full {
+    background: rgba(20, 25, 35, 0.6);
+    backdrop-filter: saturate(180%) blur(25px);
+    -webkit-backdrop-filter: saturate(180%) blur(25px);
+    border-radius: var(--radius-lg);
+    padding: 35px;
+    max-width: 1400px;
+    margin: 20px auto;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px var(--glass-border),
+        inset 0 1px 0 var(--glass-highlight);
+    border: 1px solid var(--glass-border);
+}
+
+/* 头部 - 磨砂玻璃 */
+.kina-library-header-full {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 var(--glass-highlight);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.kina-library-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.kina-library-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(102, 192, 244, 0.8) 0%, rgba(42, 117, 169, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 
+        0 8px 25px rgba(102, 192, 244, 0.3),
+        0 0 0 1px rgba(255,255,255,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.kina-library-titles h2 {
+    color: var(--text-primary);
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.kina-library-subtitle {
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.kina-library-stats {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.kina-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.kina-stat-num {
+    color: var(--steam-blue);
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(102, 192, 244, 0.5);
+}
+
+.kina-stat-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.kina-stat-divider {
+    width: 1px;
+    height: 45px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+/* 游戏网格 - 竖屏封面 */
+.kina-games-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 25px;
+}
+
+.kina-game-card {
+    text-decoration: none;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.kina-game-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    z-index: 10;
+}
+
+.kina-game-poster {
+    position: relative;
+    aspect-ratio: 2/3;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.3),
+        0 0 0 1px var(--glass-border);
+    background: rgba(0,0,0,0.2);
+    transition: all 0.4s;
+}
+
+.kina-game-card:hover .kina-game-poster {
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(102, 192, 244, 0.3),
+        0 0 40px rgba(102, 192, 244, 0.2);
+}
+
+.kina-game-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.kina-game-card:hover .kina-game-poster img {
+    transform: scale(1.1);
+}
+
+/* 悬停遮罩 - 磨砂玻璃 */
+.kina-poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.kina-game-card:hover .kina-poster-overlay {
+    opacity: 1;
+}
+
+.kina-view-game {
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.kina-view-game:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.kina-playtime-badge {
+    color: var(--steam-green);
+    font-size: 18px;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* 标签 - 磨砂玻璃 */
+.kina-recent-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(164, 208, 7, 0.9);
+    backdrop-filter: blur(10px);
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2);
+    z-index: 2;
+    letter-spacing: 0.5px;
+}
+
+.kina-hours-corner {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    color: var(--steam-green);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(164, 208, 7, 0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-shadow: 0 0 10px rgba(164, 208, 7, 0.3);
+}
+
+/* 游戏详情 */
+.kina-game-details {
+    margin-top: 15px;
+    padding: 0 5px;
+}
+
+.kina-game-title {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+}
+
+.kina-game-card:hover .kina-game-title {
+    color: var(--steam-blue);
+    text-shadow: 0 0 15px rgba(102, 192, 244, 0.3);
+}
+
+.kina-game-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.kina-meta-recent {
+    color: var(--steam-green);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-shadow: 0 0 10px rgba(164, 208, 7, 0.2);
+}
+
+.kina-meta-total {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* 最近游戏高亮 */
+.kina-game-card.is-recent .kina-game-poster::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--steam-green), transparent);
+    z-index: 3;
+    box-shadow: 0 0 20px var(--steam-green);
+}
+
+/* ==================== 错误提示 - 磨砂玻璃 ==================== */
+.kina-steam-error {
+    background: rgba(192, 41, 66, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    padding: 25px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 
+        0 10px 30px rgba(192, 41, 66, 0.3),
+        0 0 0 1px rgba(255,255,255,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ==================== 响应式 ==================== */
+@media (max-width: 768px) {
+    .kina-profile-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .kina-profile-name {
+        font-size: 28px;
+    }
+    
+    .kina-recent-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .kina-games-grid-full {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .kina-library-header-full {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .kina-library-stats {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .kina-steam-mini-status {
+        min-width: 200px;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .kina-games-grid-full {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .kina-steam-library-full {
+        padding: 20px;
+    }
+}
