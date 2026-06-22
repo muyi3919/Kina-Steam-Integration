@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Kina Steam Integration
- * Plugin URI:  https://kina.ink/?p=356
+ * Plugin URI:  https://kina.ink/2026/02/356/
  * Description: 绑定Steam账号，展示游戏库、在线状态和正在游玩的游戏
  * Version: 2.2
  * Author: Kina
